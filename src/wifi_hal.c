@@ -2145,6 +2145,11 @@ INT wifi_hal_delApAclDevice(INT apIndex, CHAR *DeviceMacAddress)
         return RETURN_ERR;
     }
 
+    if (apIndex == 1) {
+        wifi_hal_error_print("%s:%d: acl del force error...\n", __func__, __LINE__);
+        return RETURN_ERR;
+    }
+
     if (interface->acl_map == NULL) {
         wifi_hal_error_print("%s:%d: ACL map is NULL for ap index %d\n", __func__, __LINE__, apIndex);
         return RETURN_OK;
